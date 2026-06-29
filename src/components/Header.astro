@@ -1,0 +1,100 @@
+---
+import { company } from '../data/content';
+import type { LocaleContent, Locale } from '../data/content';
+
+interface Props {
+  locale: Locale;
+  c: LocaleContent;
+}
+
+const { locale, c } = Astro.props;
+---
+
+<header>
+  <div class="container bar">
+    <a class="brand" href={locale === 'pt' ? '/' : '/en/'}>{company.name}</a>
+
+    <nav class="nav">
+      <a href="#about">{c.nav.about}</a>
+      <a href="#services">{c.nav.services}</a>
+      <a href="#contact">{c.nav.contact}</a>
+
+      <span class="lang" aria-label="Language">
+        <a href="/" class={locale === 'pt' ? 'active' : ''}>PT</a>
+        <span class="sep">/</span>
+        <a href="/en/" class={locale === 'en' ? 'active' : ''}>EN</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(11, 31, 58, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .brand {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav > a {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .nav > a:hover {
+    color: var(--text);
+  }
+
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .lang a {
+    color: var(--text-muted);
+  }
+
+  .lang a.active {
+    color: var(--accent);
+  }
+
+  .lang .sep {
+    color: var(--border);
+  }
+
+  @media (max-width: 560px) {
+    .nav {
+      gap: 1rem;
+    }
+    .nav > a:not(:last-child) {
+      display: none;
+    }
+  }
+</style>

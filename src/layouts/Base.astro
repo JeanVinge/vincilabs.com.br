@@ -1,0 +1,137 @@
+---
+import { company } from '../data/content';
+import type { Locale } from '../data/content';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/favicon.svg', Astro.site).href;
+---
+
+<!doctype html>
+<html lang={locale === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="theme-color" content="#0B1F3A" />
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      :root {
+        --bg: #0b1f3a;
+        --bg-soft: #11294a;
+        --surface: #15315a;
+        --text: #eaf1fb;
+        --text-muted: #a9bbd4;
+        --accent: #4da3ff;
+        --accent-strong: #2f86ee;
+        --border: rgba(255, 255, 255, 0.08);
+        --max-width: 1080px;
+        --radius: 16px;
+        --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--accent-strong);
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        margin: 0 0 0.5em;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        margin: 0 0 1em;
+      }
+
+      section {
+        padding: 5.5rem 1.5rem;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--accent-strong);
+        color: #fff;
+        padding: 0.85rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 0.15s ease, background 0.15s ease;
+      }
+
+      .btn:hover {
+        background: var(--accent);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 640px) {
+        section {
+          padding: 4rem 1.25rem;
+        }
+      }
+    </style>
+  </body>
+</html>

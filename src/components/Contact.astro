@@ -1,0 +1,59 @@
+---
+import { company } from '../data/content';
+import type { LocaleContent } from '../data/content';
+
+interface Props {
+  c: LocaleContent;
+}
+
+const { c } = Astro.props;
+---
+
+<section id="contact" class="contact">
+  <div class="container inner">
+    <h2>{c.contact.heading}</h2>
+    <p>{c.contact.body}</p>
+
+    <p class="email">
+      <span class="label">{c.contact.emailLabel}:</span>
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+    </p>
+
+    <a class="btn" href={`mailto:${company.email}`}>{c.contact.cta}</a>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+  }
+
+  .inner {
+    max-width: 680px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  }
+
+  .contact > .inner > p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .email {
+    margin: 1.5rem 0 2rem;
+    font-size: 1.1rem;
+  }
+
+  .email .label {
+    color: var(--text-muted);
+    margin-right: 0.4rem;
+  }
+
+  .email a {
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import { company } from '../data/content';
+import type { LocaleContent } from '../data/content';
+
+interface Props {
+  c: LocaleContent;
+}
+
+const { c } = Astro.props;
+
+// Static build year. Update if you want it to track the current year automatically
+// (would require a small server/client script — kept static for a pure static site).
+const year = 2026;
+
+// Only show legal details once the TODO placeholders in content.ts are filled in.
+const showLegalName = !company.legalName.startsWith('TODO');
+const showCnpj = !company.cnpj.startsWith('TODO');
+const showLocation = !company.location.startsWith('TODO');
+---
+
+<footer>
+  <div class="container inner">
+    <div class="legal">
+      <strong>{company.name}</strong>
+      {showLegalName && <span>{company.legalName}</span>}
+      {showCnpj && <span>CNPJ: {company.cnpj}</span>}
+      {showLocation && <span>{company.location}</span>}
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+    </div>
+    <p class="copy">© {year} {company.name}. {c.footer.rights}</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 3rem 1.5rem;
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .legal strong {
+    color: var(--text);
+  }
+
+  .copy {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+</style>
