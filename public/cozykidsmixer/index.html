@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cozy Mixer: Kids Sleep Sounds</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="100 calming sounds, and every one of them is free: rain, a fireplace, purring cats, piano lullabies, and white, pink or brown noise. No sign-in, works offline." />
+  <link rel="canonical" href="https://vincilabs.com.br/cozykidsmixer/" />
+  <meta name="theme-color" content="#4A3A7A" />
+  <meta name="apple-itunes-app" content="app-id=6793739390" />
+  <link rel="icon" type="image/png" href="/cozykidsmixer/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/cozykidsmixer/assets/icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vincilabs.com.br/cozykidsmixer/" />
+  <meta property="og:title" content="Cozy Mixer: Kids Sleep Sounds" />
+  <meta property="og:description" content="A sound machine for kids with a small pixel-art village inside it. You choose the sounds, the village gets ready for bed, and your child drifts off along with it." />
+  <meta property="og:image" content="https://vincilabs.com.br/cozykidsmixer/assets/icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="/cozykidsmixer/assets/young-serif.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Cozy Mixer: Kids Sleep Sounds",
+    "operatingSystem": "iOS, iPadOS",
+    "applicationCategory": "HealthApplication",
+    "description": "A sound machine for kids with a small pixel-art village inside it. You choose the sounds, the village gets ready for bed, and your child drifts off along with it.",
+    "image": "https://vincilabs.com.br/cozykidsmixer/assets/icon.png",
+    "url": "https://vincilabs.com.br/cozykidsmixer/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Vinci Labs", "url": "https://vincilabs.com.br/" }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Young Serif";
+      src: url("/cozykidsmixer/assets/young-serif.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* The app's own palette (PixelTheme, as in the store screenshots), plus the
+       twilight violet of the app icon. The page runs from one to the other. */
+    :root {
+      --twilight: #4A3A7A;
+      --dusk: #2D1F4F;
+      --night-lift: #1E2745;
+      --navy: #1A1A2E;
+      --navy-deep: #0F0F1E;
+      --cream: #F0E6C8;
+      --cyan: #7EC8E3;
+      --gold: #FFD700;
+      --dim: #9BA8C4;
+      --hairline: rgba(240, 230, 200, 0.18);
+      --serif: "Young Serif", "New York", Georgia, serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--navy-deep); }
+    body {
+      margin: 0;
+      color: var(--cream);
+      font: 400 1.0625rem/1.6 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* One evening, top to bottom. The stars come out as the sky darkens. */
+    .sky {
+      position: relative;
+      overflow: hidden;
+      padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+      background: linear-gradient(180deg,
+        var(--twilight) 0%, #3B2D68 14%, var(--dusk) 30%,
+        var(--night-lift) 52%, var(--navy) 74%, var(--navy-deep) 100%);
+    }
+    .sky::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='560' fill='%23F0E6C8' shape-rendering='crispEdges'%3E%3Cpath opacity='.85' d='M23 41h2v2h-2zM151 72h2v2h-2zM128 462h2v2h-2zM371 478h2v2h-2z'/%3E%3Cpath opacity='.6' d='M264 23h2v2h-2zM318 146h2v2h-2zM44 377h2v2h-2zM301 521h2v2h-2zM402 395h2v2h-2zM283 221h2v2h-2z'/%3E%3Cpath opacity='.4' d='M97 188h2v2h-2zM206 309h2v2h-2zM171 251h2v2h-2zM355 64h2v2h-2zM69 529h2v2h-2zM12 236h2v2h-2zM237 418h2v2h-2zM389 262h2v2h-2z'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='610' height='730' fill='%23F0E6C8' shape-rendering='crispEdges'%3E%3Cpath opacity='.9' d='M411 314h2v8h-2zM408 317h8v2h-8zM87 118h2v8h-2zM84 121h8v2h-8z'/%3E%3Cpath opacity='.85' d='M539 611h3v3h-3zM201 560h3v3h-3z'/%3E%3Cpath opacity='.5' d='M302 44h2v2h-2zM583 190h2v2h-2zM47 431h2v2h-2zM256 701h2v2h-2zM468 82h2v2h-2zM140 300h2v2h-2zM360 470h2v2h-2zM590 405h2v2h-2z'/%3E%3C/svg%3E");
+      background-size: 420px 560px, 610px 730px;
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 20%, #000 60%);
+              mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 20%, #000 60%);
+    }
+    .sky > * { position: relative; }
+
+    .wrap { max-width: 1080px; margin-inline: auto; }
+
+    a { color: var(--cream); text-decoration-color: rgba(240, 230, 200, 0.4); text-underline-offset: 3px; }
+    a:hover { text-decoration-color: currentColor; }
+    a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+
+    h1, h2 { font-family: var(--serif); font-weight: 400; text-wrap: balance; }
+    h1 { font-size: clamp(2.6rem, 6.4vw + 0.6rem, 4.6rem); line-height: 1.04; letter-spacing: -0.012em; margin: 0 0 20px; }
+    h2 { font-size: clamp(1.85rem, 3vw + 1rem, 2.75rem); line-height: 1.1; letter-spacing: -0.005em; margin: 0 0 18px; }
+    h3 { font: 500 0.9375rem/1 var(--mono); letter-spacing: 0.02em; margin: 0 0 12px; }
+    p { margin: 0 0 16px; max-width: 36rem; }
+
+    section { padding-block: clamp(48px, 7vw, 88px); }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      gap: clamp(44px, 6vw, 72px);
+      align-items: center;
+      padding-block: clamp(36px, 7vw, 88px) clamp(48px, 7vw, 88px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 clamp(28px, 5vw, 44px);
+      font: 500 0.9375rem/1 var(--mono);
+      letter-spacing: 0.01em;
+    }
+    .brand img { width: 44px; height: 44px; border-radius: 10px; }
+    .lede { color: var(--cyan); font-size: clamp(1.125rem, 0.9vw + 0.9rem, 1.3125rem); line-height: 1.5; max-width: 34rem; margin: 0 0 28px; }
+    .soon {
+      display: inline-block;
+      margin: 0;
+      padding: 10px 16px;
+      border: 1.5px solid rgba(240, 230, 200, 0.45);
+      border-radius: 999px;
+      background: rgba(15, 15, 30, 0.25);
+      font: 500 0.875rem/1.35 var(--mono);
+    }
+    .devices { margin: 12px 0 0 2px; font: 500 0.8125rem/1 var(--mono); color: rgba(240, 230, 200, 0.75); }
+
+    /* An iPhone drawn in CSS, from the store screenshots' measurements: rim,
+       bezel and screen radii are concentric fractions of the device width. */
+    .phone {
+      --w: min(290px, 72vw);
+      position: relative;
+      width: var(--w);
+      margin-inline: auto;
+      padding: calc(var(--w) * 0.006);
+      border-radius: calc(var(--w) * 0.174);
+      background: linear-gradient(148deg,
+        #F2F4F8 0%, #B9BFCC 6%, #767C8C 16%, #3C4150 34%,
+        #2A2E39 52%, #3F4453 68%, #878D9D 86%, #D9DDE6 96%, #FAFBFD 100%);
+      box-shadow:
+        0 0 calc(var(--w) * 0.01) rgba(0, 0, 0, 0.5),
+        calc(var(--w) * 0.02) calc(var(--w) * 0.05) calc(var(--w) * 0.09) rgba(0, 0, 0, 0.55);
+    }
+    .phone::before,
+    .phone::after {
+      content: "";
+      position: absolute;
+      width: calc(var(--w) * 0.0048);
+      border-radius: calc(var(--w) * 0.004);
+      background: linear-gradient(148deg, #C9CEDA 0%, #6E7484 40%, #2E323D 100%);
+    }
+    /* Volume up on the left rail, with volume down drawn as its shadow; power on the right. */
+    .phone::before { left: calc(var(--w) * -0.0036); top: 21%; height: 6%; box-shadow: 0 calc(var(--w) * 0.1566) 0 #6E7484; }
+    .phone::after { right: calc(var(--w) * -0.0036); top: 21.5%; height: 9%; }
+    .bezel {
+      padding: calc(var(--w) * 0.0303);
+      border-radius: calc(var(--w) * 0.168);
+      background: #04050A;
+      box-shadow: inset 0 0 0 calc(var(--w) * 0.0016) rgba(255, 255, 255, 0.13);
+    }
+    .bezel img { display: block; width: 100%; height: auto; border-radius: calc(var(--w) * 0.1377); }
+
+    /* Sounds */
+    .sounds { list-style: none; padding: 0; margin: 24px 0 28px; display: flex; flex-wrap: wrap; gap: 8px; max-width: 44rem; }
+    .sounds li {
+      font: 500 0.875rem/1 var(--mono);
+      padding: 9px 12px;
+      border: 1.5px solid rgba(126, 200, 227, 0.5);
+      border-radius: 10px;
+      background: rgba(22, 33, 62, 0.5);
+    }
+    .sounds li.more { border-style: dashed; color: var(--dim); background: none; }
+
+    /* Village, day and night */
+    .split { display: grid; gap: clamp(32px, 5vw, 64px); align-items: center; }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .pair figure { margin: 0; }
+    .pair img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 660 / 600;
+      object-fit: cover;
+      object-position: 50% 0;
+      border-radius: 18px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    }
+    .pair img.late { object-position: 50% 20.4%; }
+    .pair figcaption { margin-top: 10px; text-align: center; font: 500 0.8125rem/1 var(--mono); color: var(--dim); }
+
+    /* Bedtime features */
+    .duo { display: grid; column-gap: 64px; }
+    .features { list-style: none; padding: 0; margin: 8px 0 0; max-width: 40rem; }
+    .features li { position: relative; padding-left: 22px; margin: 0 0 12px; }
+    .features li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; background: var(--cyan); }
+    .keep { white-space: nowrap; }
+    .premium {
+      display: inline-block;
+      margin-left: 4px;
+      padding: 4px 8px;
+      border: 1.5px solid currentColor;
+      border-radius: 999px;
+      color: var(--gold);
+      font: 500 0.75rem/1 var(--mono);
+      vertical-align: 2px;
+    }
+
+    /* Free and Premium */
+    .plans { display: grid; gap: 28px; }
+    .plans > div + div { border-top: 1px solid var(--hairline); padding-top: 28px; }
+    .gold { color: var(--gold); }
+
+    /* Night falls */
+    footer { padding-block: clamp(40px, 8vw, 96px) max(48px, env(safe-area-inset-bottom)); text-align: center; }
+    .scene { position: relative; width: min(100%, 420px); height: 400px; margin-inline: auto; }
+    .scene img { position: absolute; display: block; image-rendering: pixelated; }
+    .moon { left: max(0px, calc(50% - 190px)); top: 0; width: 128px; height: 128px; }
+    .zzz { left: calc(50% + 40px); top: 100px; width: 96px; height: 96px; }
+    .sleeper { left: 50%; bottom: 0; width: 320px; height: 240px; transform: translateX(-50%); }
+    .goodnight { font: 400 clamp(2rem, 4vw + 1rem, 3rem)/1.1 var(--serif); margin: 28px auto 10px; max-width: none; }
+    .made { color: var(--dim); margin: 0 auto 20px; font-size: 0.9375rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font: 500 0.875rem/1.4 var(--mono); }
+
+    @media (min-width: 720px) {
+      .plans { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .plans > div + div { border-top: 0; padding-top: 0; border-left: 1px solid var(--hairline); padding-left: 48px; }
+    }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: minmax(0, 1fr) auto; }
+      .phone { --w: 300px; }
+      .split, .duo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      /* Text in the left column, the sound list beside it. */
+      .sounds-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 64px; }
+      .sounds-section > * { grid-column: 1; }
+      .sounds-section > .sounds { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky">
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <p class="brand"><img src="/cozykidsmixer/assets/icon.png" width="44" height="44" alt="" />Cozy Mixer</p>
+          <h1>Bedtime, without the battle</h1>
+          <p class="lede">A sound machine for kids with a small pixel-art village inside it. You choose the sounds, the village gets ready for bed, and your child drifts off along with it.</p>
+          <!-- At launch, swap this line for Apple's "Download on the App Store" badge, linked to https://apps.apple.com/app/id6793739390 -->
+          <p class="soon">Coming soon to the App Store</p>
+          <p class="devices">For iPhone and iPad</p>
+        </div>
+        <div class="phone">
+          <div class="bezel">
+            <img src="/cozykidsmixer/assets/night.webp" width="660" height="1434" fetchpriority="high"
+                 alt="Cozy Mixer at bedtime: the pixel village at night, with villagers and a cat around the campfire and three sounds playing in the mixer below" />
+          </div>
+        </div>
+      </section>
+
+      <section class="sounds-section">
+        <h2>Every sound that settles them</h2>
+        <p>100 calming sounds, and every one of them is free to use.</p>
+        <ul class="sounds" aria-label="Some of the sounds">
+          <li>Soft Rain</li>
+          <li>Fireplace</li>
+          <li>Purring Cat</li>
+          <li>Soft Piano</li>
+          <li>Water Stream</li>
+          <li>Bird Sanctuary</li>
+          <li>Deep Jungle</li>
+          <li>White Noise</li>
+          <li>Pink Noise</li>
+          <li>Brown Noise</li>
+          <li class="more">and 90 more</li>
+        </ul>
+        <p>Each sound has its own volume slider, so the rain can stay soft while the fire crackles a little louder.</p>
+        <p>There are also nine ready-made mixes for naps and nights, for when you just want to press play.</p>
+      </section>
+
+      <section class="split">
+        <div>
+          <h2>A village that gets sleepy too</h2>
+          <p>While your mix plays, the village goes through its evening. The sky gets dark, the villagers gather around the campfire, a fairy floats over the pond, and as it gets late they all go to sleep.</p>
+        </div>
+        <div class="pair">
+          <figure>
+            <img src="/cozykidsmixer/assets/day.webp" width="660" height="600" loading="lazy" alt="The village in the daytime, under a blue sky with a few clouds" />
+            <figcaption>Daytime</figcaption>
+          </figure>
+          <figure>
+            <img class="late" src="/cozykidsmixer/assets/night.webp" width="660" height="600" loading="lazy" alt="The same village at bedtime, under a dark sky with the campfire lit" />
+            <figcaption>Bedtime</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="duo">
+        <section>
+          <h2>Made for bedtime</h2>
+          <ul class="features">
+            <li>Keeps playing when the screen is locked</li>
+            <li>AirPlay to any speaker, or cast to a <span class="keep">Chromecast <span class="premium">Premium</span></span></li>
+            <li>A sleep timer that fades the sound out slowly, from 15 minutes to all <span class="keep">night <span class="premium">Premium</span></span></li>
+            <li>Bedtime schedules: pick the nights, and a reminder starts your mix with one <span class="keep">tap <span class="premium">Premium</span></span></li>
+            <li>A Home Screen widget to play, pause and set the timer without opening the <span class="keep">app <span class="premium">Premium</span></span></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Works offline</h2>
+          <p>Every sound is stored in the app, so there's nothing to download and no account to create. It works fine in airplane mode.</p>
+          <p>Ads are never personalized, and the app never asks for your advertising ID.</p>
+        </section>
+      </div>
+
+      <section>
+        <h2>Free and Premium</h2>
+        <div class="plans">
+          <div>
+            <h3>Free</h3>
+            <p>Every sound, five minutes of listening at a time (a short ad gives you five more), and up to three sounds playing together.</p>
+          </div>
+          <div>
+            <h3 class="gold">Premium</h3>
+            <p>Unlimited listening and mixing, the sleep timer, bedtime schedules, Chromecast and the widget, with no ads.</p>
+            <p>$9.99 a month, or $69.99 a year with a 7-day free trial. Cancel anytime in Settings.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <div class="scene" aria-hidden="true">
+        <img class="moon" src="/cozykidsmixer/assets/moon.png" width="128" height="128" loading="lazy" alt="" />
+        <img class="zzz" src="/cozykidsmixer/assets/zzz.png" width="96" height="96" loading="lazy" alt="" />
+        <img class="sleeper" src="/cozykidsmixer/assets/hero_sleeping.png" width="160" height="120" loading="lazy" alt="" />
+      </div>
+      <p class="goodnight">Goodnight.</p>
+      <p class="made">Cozy Mixer is made by Vinci Labs.</p>
+      <nav class="links" aria-label="More about Cozy Mixer">
+        <a href="/cozykidsmixer/privacy/">Privacy policy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of use</a>
+        <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
