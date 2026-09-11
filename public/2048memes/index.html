@@ -154,7 +154,26 @@
       text-transform: uppercase;
       text-decoration: none;
     }
-    .store small { font: 700 0.8125rem/1.25 var(--body); letter-spacing: 0; text-transform: none; }
+    /* Google Play isn't live yet: same shape as a store button, but flat, dashed and not a
+       link, so it reads as "not yet" rather than as something to press. */
+    .soon {
+      flex: 1 1 9.5rem;
+      max-width: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 64px;
+      margin: 0;
+      padding: 9px 18px 10px;
+      color: rgba(255, 255, 255, 0.88);
+      background: var(--cobalt-deep);
+      border: 3px dashed rgba(255, 255, 255, 0.5);
+      border-radius: 18px;
+      font: 400 1.5rem/1.05 var(--display);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .store small, .soon small { font: 700 0.8125rem/1.25 var(--body); letter-spacing: 0; text-transform: none; }
     .note { font-size: 1rem; max-width: 30rem; }
 
     /* Every face, on a board drawn with the game's measurements. */
@@ -315,7 +334,9 @@
         <p class="lede">A merge puzzle where every tile is a reaction face. Swipe to slide the tiles, and when two matching faces touch, they merge into the next face up. Each one reacts a little harder than the last, from a polite <img class="face" src="/2048memes/assets/face-2.webp" width="160" height="160" alt="🙂" /> at 2 to the stone face <img class="face" src="/2048memes/assets/face-2048.webp" width="160" height="160" alt="🗿" /> at 2048.</p>
         <div class="stores">
           <a class="store" href="https://apps.apple.com/app/id853096849"><small>Download on the</small>App Store</a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=br.com.vincilabs.memes2048"><small>Get it on</small>Google Play</a>
+          <!-- Google Play isn't live yet. At the Android release, replace the badge below with this link:
+               <a class="store" href="https://play.google.com/store/apps/details?id=br.com.vincilabs.memes2048"><small>Get it on</small>Google Play</a> -->
+          <p class="soon"><small>Coming soon to </small>Google Play</p>
         </div>
         <p class="note">Free, with ads. You don't need an account or an internet connection to play.</p>
       </div>

@@ -154,7 +154,26 @@
       text-transform: uppercase;
       text-decoration: none;
     }
-    .store small { font: 700 0.8125rem/1.25 var(--body); letter-spacing: 0; text-transform: none; }
+    /* Google Play isn't live yet: same shape as a store button, but flat, dashed and not a
+       link, so it reads as "not yet" rather than as something to press. */
+    .soon {
+      flex: 1 1 9.5rem;
+      max-width: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 64px;
+      margin: 0;
+      padding: 9px 18px 10px;
+      color: rgba(255, 255, 255, 0.88);
+      background: var(--cobalt-deep);
+      border: 3px dashed rgba(255, 255, 255, 0.5);
+      border-radius: 18px;
+      font: 400 1.5rem/1.05 var(--display);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .store small, .soon small { font: 700 0.8125rem/1.25 var(--body); letter-spacing: 0; text-transform: none; }
     .note { font-size: 1rem; max-width: 30rem; }
 
     /* Every face, on a board drawn with the game's measurements. */
@@ -315,7 +334,9 @@
         <p class="lede">Um quebra-cabeça de juntar peças em que cada peça é uma carinha de reação. Deslize pra mover as peças. Quando duas carinhas iguais se encostam, elas viram a próxima, e cada uma reage um pouco mais que a anterior: do <img class="face" src="/2048memes/assets/face-2.webp" width="160" height="160" alt="🙂" /> educado no 2 até a cara de pedra <img class="face" src="/2048memes/assets/face-2048.webp" width="160" height="160" alt="🗿" /> no 2048.</p>
         <div class="stores">
           <a class="store" href="https://apps.apple.com/app/id853096849"><small>Baixar na</small>App Store</a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=br.com.vincilabs.memes2048"><small>Disponível no</small>Google Play</a>
+          <!-- Google Play isn't live yet. At the Android release, replace the badge below with this link:
+               <a class="store" href="https://play.google.com/store/apps/details?id=br.com.vincilabs.memes2048"><small>Disponível no</small>Google Play</a> -->
+          <p class="soon"><small>Em breve no </small>Google Play</p>
         </div>
         <p class="note">Grátis, com anúncios. Não precisa de conta nem de internet pra jogar.</p>
       </div>
