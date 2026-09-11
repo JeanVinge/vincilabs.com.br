@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>2048 Memes: Política de Privacidade</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Política de privacidade do 2048 Memes, um jogo de quebra-cabeça da Vinci Labs. O app guarda seu jogo no seu aparelho e mostra anúncios do Google AdMob." />
+  <link rel="canonical" href="https://vincilabs.com.br/2048memes/pt/privacy/" />
+  <link rel="alternate" hreflang="en" href="https://vincilabs.com.br/2048memes/privacy/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://vincilabs.com.br/2048memes/pt/privacy/" />
+  <link rel="alternate" hreflang="x-default" href="https://vincilabs.com.br/2048memes/privacy/" />
+  <meta name="theme-color" content="#2447F5" />
+  <link rel="icon" type="image/png" href="/2048memes/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/2048memes/assets/icon.png" />
+  <link rel="preload" href="/2048memes/assets/anton.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/2048memes/assets/comic-neue-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: "Anton";
+      src: url("/2048memes/assets/anton.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Comic Neue";
+      src: url("/2048memes/assets/comic-neue-regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Comic Neue";
+      src: url("/2048memes/assets/comic-neue-bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* The game's own palette, from shared/tokens.json in the app. */
+    :root {
+      --cobalt: #2447F5;
+      --cobalt-deep: #1631B8;
+      --white: #FFFFFF;
+      --ink: #0E0E14;
+      --pink: #FF3D8B;
+      --display: "Anton", Impact, "Arial Narrow Bold", sans-serif;
+      --body: "Comic Neue", "Comic Sans MS", "Chalkboard SE", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--cobalt); }
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--cobalt);
+      font: 400 1.125rem/1.6 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; }
+    p { margin: 0 0 16px; }
+    b { font-weight: 700; }
+
+    .wrap {
+      max-width: 1120px;
+      margin-inline: auto;
+      padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+    }
+    .narrow { max-width: 860px; }
+
+    a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+
+    /* Meme caption: white fill with an ink stroke painted under it, like the in-game captions. */
+    .caption {
+      font-family: var(--display);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      -webkit-text-stroke: 0.14em var(--ink);
+      paint-order: stroke fill;
+    }
+
+    .sticker { display: block; height: auto; filter: drop-shadow(0 4px 8px rgba(14, 14, 20, 0.3)); }
+
+    /* Top bar */
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); }
+    .home { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.125rem; line-height: 1; text-decoration: none; }
+    .home img { width: 40px; height: 40px; }
+    .lang {
+      padding: 10px 14px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* Title */
+    .head { padding-block: clamp(36px, 7vw, 72px) 32px; }
+    h1.caption { margin: 0 0 16px; font-size: clamp(3rem, 6vw + 1.2rem, 5.5rem); text-wrap: balance; }
+    .meta { margin: 0; font-size: 1.0625rem; }
+
+    /* The policy itself, on a white sheet with one sticker slapped on the corner. */
+    .paper {
+      position: relative;
+      margin-bottom: clamp(56px, 9vw, 104px);
+      padding: clamp(24px, 5vw, 56px);
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(14, 14, 20, 0.25);
+    }
+    .paper-sticker { position: absolute; top: -44px; right: 8px; width: clamp(92px, 20vw, 136px); transform: rotate(9deg); }
+    .paper h2 { margin: 44px 0 12px; font: 400 clamp(1.5rem, 1.2vw + 1.15rem, 1.875rem)/1.1 var(--display); letter-spacing: 0.01em; text-transform: uppercase; }
+    .paper p, .paper li { max-width: 40rem; }
+    .paper ul { margin: 0 0 16px; padding-left: 1.25em; }
+    .paper li { margin: 0 0 10px; padding-left: 0.2em; }
+    .paper li::marker { color: var(--pink); }
+    .paper a { color: var(--cobalt); overflow-wrap: anywhere; }
+    .paper :focus-visible { outline-color: var(--cobalt); }
+    .short { padding: clamp(18px, 3vw, 28px); border: 3px solid var(--cobalt); border-radius: 18px; }
+    .short h2 { margin-top: 0; }
+    .short ul, .short li:last-child { margin-bottom: 0; }
+    .paper > :last-child { margin-bottom: 0; }
+
+    /* Footer */
+    .foot { padding-block: clamp(40px, 7vw, 72px) max(40px, env(safe-area-inset-bottom)); background: var(--cobalt-deep); text-align: center; }
+    .made { margin: 0 auto 18px; max-width: 34rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; font-weight: 700; }
+    .credit { margin: 32px auto 0; font-size: 0.9375rem; }
+
+    @media (min-width: 720px) {
+      .paper-sticker { top: -72px; right: -28px; }
+    }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .lang { transition: background-color 120ms ease-out; }
+      .lang:hover { background: rgba(255, 255, 255, 0.14); }
+    }
+  </style>
+</head>
+<body>
+  <header class="top wrap narrow">
+    <a class="home" href="/2048memes/pt/"><img src="/2048memes/assets/face-2048.webp" width="160" height="160" alt="" />2048 Memes</a>
+    <a class="lang" href="/2048memes/privacy/" hreflang="en" lang="en">English</a>
+  </header>
+
+  <main class="wrap narrow">
+    <div class="head">
+      <h1 class="caption">Política de privacidade</h1>
+      <p class="meta">2048 Memes para iOS e Android · Em vigor desde <time datetime="2026-09-11">11 de setembro de 2026</time></p>
+    </div>
+
+    <article class="paper">
+      <img class="sticker paper-sticker" src="/2048memes/assets/eyebrow-sticker.webp" width="284" height="284" alt="" />
+
+      <section class="short" aria-labelledby="short-title">
+        <h2 id="short-title">Resumo</h2>
+        <ul>
+          <li>Nós não coletamos nenhum dado pessoal. O app não tem conta, login nem ferramentas de análise (analytics).</li>
+          <li>Seu jogo, seu recorde e seus ajustes ficam guardados só no seu aparelho.</li>
+          <li>Os anúncios vêm do Google AdMob. O Google pode coletar alguns dados para exibi-los, como explicado abaixo, e você pode mudar suas escolhas sobre anúncios quando quiser.</li>
+        </ul>
+      </section>
+
+      <h2>Quem faz o 2048 Memes</h2>
+      <p>O 2048 Memes é desenvolvido pela VINCI LABS (Jean Vinge), no Brasil. Nesta política, "nós" quer dizer a VINCI LABS. Se tiver qualquer dúvida sobre privacidade, escreva para <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>.</p>
+
+      <h2>O que o app guarda no seu aparelho</h2>
+      <p>O app salva no seu aparelho o jogo em andamento, o seu recorde e os seus ajustes (como vibração e idioma). Essas informações não são enviadas para nós nem para mais ninguém.</p>
+      <p>Não existe conta nem login. O app não inclui nenhum SDK de análise (analytics), e nós não coletamos dados pessoais.</p>
+
+      <h2>Anúncios</h2>
+      <p>O 2048 Memes é gratuito e mostra anúncios do Google AdMob, por meio do Google Mobile Ads SDK: um banner embaixo do tabuleiro e, de vez em quando, um anúncio de tela cheia (intersticial) entre uma partida e outra.</p>
+      <p>Para exibir e medir os anúncios e evitar fraudes, o Google pode coletar:</p>
+      <ul>
+        <li>Identificadores do aparelho. No iOS, isso inclui o identificador de publicidade (IDFA), mas só se você permitir o rastreamento quando o aviso de Transparência de Rastreamento de Apps (App Tracking Transparency) da Apple perguntar. No Android, inclui o ID de publicidade do Android.</li>
+        <li>Seu endereço IP e uma localização aproximada calculada a partir dele.</li>
+        <li>Como você interage com os anúncios, além de dados de diagnóstico e desempenho.</li>
+      </ul>
+      <p>O Google trata esses dados de acordo com as próprias políticas. Veja <a href="https://policies.google.com/technologies/partner-sites">como o Google usa informações de sites ou apps que usam os serviços dele</a> e a <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</p>
+
+      <h2>Consentimento e suas escolhas</h2>
+      <p>Onde a lei exige (no Espaço Econômico Europeu, no Reino Unido, na Suíça e nos estados dos EUA com leis de privacidade), o app usa a Plataforma de Mensagens ao Usuário (User Messaging Platform) do Google para pedir o seu consentimento ou para permitir que você recuse, conforme as regras do lugar onde você mora.</p>
+      <p>Você pode mudar sua escolha quando quiser, no próprio app: abra <b>Ajustes</b> e toque em <b>Privacidade dos anúncios</b>.</p>
+      <p>No iOS, você também pode desligar o rastreamento no app Ajustes, em Privacidade e Segurança › Rastreamento. No Android, você pode redefinir ou excluir o ID de publicidade nas configurações do celular, normalmente em Privacidade › Anúncios ou Google › Anúncios.</p>
+
+      <h2>Crianças</h2>
+      <p>O 2048 Memes não é direcionado a crianças menores de 13 anos. Nós não coletamos intencionalmente informações pessoais de ninguém, incluindo crianças.</p>
+
+      <h2>Guarda e exclusão dos dados</h2>
+      <p>Tudo o que o app guarda fica no seu aparelho até você apagar. Desinstalar o app apaga tudo, e nós não guardamos nenhuma cópia.</p>
+      <p>Os dados que o Google coleta para anúncios são guardados de acordo com a Política de Privacidade do Google, que também explica como você pode controlá-los.</p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>Se esta política mudar, vamos publicar a nova versão nesta página e atualizar a data de vigência no topo. Se a mudança afetar quais dados são coletados ou como são usados, também vamos avisar nas notas da atualização do app.</p>
+      <p>Esta versão está em vigor desde <time datetime="2026-09-11">11 de setembro de 2026</time>.</p>
+
+      <h2>Contato</h2>
+      <p>VINCI LABS (Jean Vinge), Brasil<br />E-mail: <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a></p>
+    </article>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="made">O 2048 Memes é feito pela Vinci Labs.</p>
+      <nav class="links" aria-label="Mais sobre o 2048 Memes">
+        <a href="/2048memes/pt/">2048 Memes</a>
+        <a href="/2048memes/pt/#support">Suporte</a>
+        <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+      <p class="credit">Arte dos emojis: Microsoft Fluent Emoji, <a href="/2048memes/assets/LICENSE-fluentui-emoji.txt">licença MIT</a></p>
+    </div>
+  </footer>
+</body>
+</html>

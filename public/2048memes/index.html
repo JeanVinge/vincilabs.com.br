@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>2048 Memes</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="A merge puzzle where every tile is a reaction face, from a polite smile at 2 to the stone face at 2048. Free with ads, and it works offline with no account." />
+  <link rel="canonical" href="https://vincilabs.com.br/2048memes/" />
+  <link rel="alternate" hreflang="en" href="https://vincilabs.com.br/2048memes/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://vincilabs.com.br/2048memes/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://vincilabs.com.br/2048memes/" />
+  <meta name="theme-color" content="#2447F5" />
+  <meta name="apple-itunes-app" content="app-id=853096849" />
+  <link rel="icon" type="image/png" href="/2048memes/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/2048memes/assets/icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vincilabs.com.br/2048memes/" />
+  <meta property="og:title" content="2048 Memes" />
+  <meta property="og:description" content="The 2048 puzzle with a reaction face on every tile. Merge two of the same and the next face reacts a little harder, all the way up to the stone face at 2048." />
+  <meta property="og:image" content="https://vincilabs.com.br/2048memes/assets/icon.png" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="/2048memes/assets/anton.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/2048memes/assets/comic-neue-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "2048 Memes",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "GameApplication",
+    "description": "The 2048 puzzle with a reaction face on every tile. Merge two of the same and the next face reacts a little harder, all the way up to the stone face at 2048.",
+    "image": "https://vincilabs.com.br/2048memes/assets/icon.png",
+    "url": "https://vincilabs.com.br/2048memes/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Vinci Labs", "url": "https://vincilabs.com.br/" }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Anton";
+      src: url("/2048memes/assets/anton.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Comic Neue";
+      src: url("/2048memes/assets/comic-neue-regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Comic Neue";
+      src: url("/2048memes/assets/comic-neue-bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* The game's own palette and sizes, from shared/tokens.json in the app. */
+    :root {
+      --cobalt: #2447F5;
+      --cobalt-deep: #1631B8;
+      --cobalt-cell: #213FD6;
+      --white: #FFFFFF;
+      --ink: #0E0E14;
+      --orange: #FF7A1A;
+      --pink: #FF3D8B;
+      --display: "Anton", Impact, "Arial Narrow Bold", sans-serif;
+      --body: "Comic Neue", "Comic Sans MS", "Chalkboard SE", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--cobalt); }
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--cobalt);
+      font: 400 1.125rem/1.55 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; }
+    p { margin: 0 0 16px; }
+    b { font-weight: 700; }
+
+    .wrap {
+      max-width: 1120px;
+      margin-inline: auto;
+      padding-inline: max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+    }
+
+    a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+
+    /* Meme caption: white fill with an ink stroke painted under it, like the in-game captions. */
+    .caption {
+      font-family: var(--display);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      -webkit-text-stroke: 0.14em var(--ink);
+      paint-order: stroke fill;
+    }
+    h2.caption { font-size: clamp(2.5rem, 3.6vw + 1.3rem, 4rem); margin: 0 0 24px; text-wrap: balance; }
+    /* On phones the support sticker sits beside this heading, so keep the words clear of it. */
+    @media (max-width: 719px) { .support h2 { padding-right: 112px; } }
+
+    /* Die-cut stickers: the white outline is baked into the image; the shadow follows its shape. */
+    .sticker { display: block; height: auto; filter: drop-shadow(0 4px 8px rgba(14, 14, 20, 0.3)); }
+
+    /* Top bar */
+    .top { display: flex; justify-content: flex-end; padding-top: max(16px, env(safe-area-inset-top)); }
+    .lang {
+      padding: 10px 14px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    /* Hero: the app's name set as a meme, top text and bottom text around the 2048 face. */
+    .hero { display: grid; gap: 28px; align-items: center; padding-block: 16px clamp(48px, 7vw, 88px); }
+    .meme { display: grid; justify-items: center; margin: 0; font-size: clamp(5rem, 21vw, 9rem); }
+    .meme .caption { position: relative; z-index: 1; }
+    .meme .top-text { margin-bottom: -0.36em; }
+    .meme .bottom-text { margin-top: -0.32em; }
+    .hero-sticker { width: clamp(220px, 58vw, 340px); transform: rotate(-4deg); }
+    .lede { font-size: clamp(1.1875rem, 0.5vw + 1.05rem, 1.375rem); line-height: 1.5; max-width: 33rem; }
+    .face { display: inline-block; width: 1.45em; height: 1.45em; margin-inline: 0.04em; vertical-align: -0.36em; }
+    .stores { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 18px; }
+    .store {
+      flex: 1 1 9.5rem;
+      max-width: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 64px;
+      padding: 9px 18px 10px;
+      color: var(--ink);
+      background: var(--orange);
+      border: 3px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 0 4px 0 var(--ink);
+      font: 400 1.5rem/1.05 var(--display);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .store small { font: 700 0.8125rem/1.25 var(--body); letter-spacing: 0; text-transform: none; }
+    .note { font-size: 1rem; max-width: 30rem; }
+
+    /* Every face, on a board drawn with the game's measurements. */
+    .faces { display: grid; gap: 40px 72px; align-items: center; padding-block: clamp(48px, 7vw, 88px); }
+    .faces p { max-width: 34rem; }
+    .board {
+      display: grid;
+      width: min(100%, 520px);
+      justify-self: center;
+      padding: 10px;
+      border-radius: 22px;
+      background: var(--cobalt-deep);
+    }
+    .cells, .tiles {
+      grid-area: 1 / 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cells i { aspect-ratio: 1; border-radius: 14%; background: var(--cobalt-cell); }
+    .tile {
+      position: relative;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--fill);
+      border: 3px solid var(--white);
+      border-radius: 14%;
+      box-shadow: 0 3px 6px rgba(14, 14, 20, 0.28);
+      transform: rotate(var(--tilt, 0deg));
+      container-type: inline-size;
+    }
+    .tile:nth-child(5n + 1) { --tilt: -2deg; }
+    .tile:nth-child(5n + 2) { --tilt: 1.5deg; }
+    .tile:nth-child(5n + 3) { --tilt: -1deg; }
+    .tile:nth-child(5n + 4) { --tilt: 2deg; }
+    .tile:nth-child(5n + 5) { --tilt: -1.5deg; }
+    .tile img { width: 62%; height: auto; margin-top: 3%; }
+    .tile .caption { font-size: 1.1rem; font-size: 21cqi; margin-top: -2cqi; -webkit-text-stroke-width: 0.2em; }
+    .win { z-index: 1; }
+    .tag {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      padding: 4px 7px 5px;
+      color: var(--ink);
+      background: var(--pink);
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      font: 700 0.75rem/1 var(--body);
+      white-space: nowrap;
+      transform: rotate(9deg);
+    }
+
+    /* Good to know */
+    .know { display: grid; gap: 8px 72px; padding-block: clamp(32px, 5vw, 64px); }
+    .facts { margin: 0; }
+    .facts div { padding-block: 18px 16px; border-top: 2px solid rgba(255, 255, 255, 0.3); }
+    .facts dt { margin-bottom: 4px; font-weight: 700; font-size: 1.25rem; }
+    .facts dd { margin: 0; max-width: 36rem; }
+
+    /* Support */
+    .support { padding-block: clamp(40px, 6vw, 72px) clamp(72px, 10vw, 112px); }
+    .card {
+      position: relative;
+      display: grid;
+      gap: 12px 56px;
+      padding: clamp(24px, 5vw, 48px);
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(14, 14, 20, 0.25);
+    }
+    .card :focus-visible { outline-color: var(--cobalt); }
+    .card a:not(.button) { color: var(--cobalt); }
+    .help-sticker { position: absolute; top: -86px; right: 10px; width: clamp(96px, 22vw, 150px); transform: rotate(10deg); }
+    .card .intro { font-size: 1.1875rem; max-width: 30rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 54px;
+      padding: 8px 20px;
+      color: var(--ink);
+      background: var(--orange);
+      border: 3px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 0 4px 0 var(--ink);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      line-height: 1.2;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .faq h3 { margin: 0 0 6px; font-size: 1.25rem; line-height: 1.3; }
+    .faq p + h3 { margin-top: 24px; }
+    .faq p:last-child { margin-bottom: 0; }
+
+    /* Footer */
+    .foot { padding-block: clamp(48px, 8vw, 88px) max(40px, env(safe-area-inset-bottom)); background: var(--cobalt-deep); text-align: center; }
+    .gg { margin: 0 0 16px; font-size: clamp(4.5rem, 12vw, 7rem); }
+    .made { margin: 0 auto 18px; max-width: 34rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; font-weight: 700; }
+    .credit { margin: 32px auto 0; font-size: 0.9375rem; }
+
+    @media (min-width: 720px) {
+      .card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .help-sticker { top: -78px; right: 40px; }
+    }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
+      .faces { grid-template-columns: minmax(0, 1fr) minmax(0, 520px); }
+      .know { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    }
+
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .store, .button { transition: transform 120ms ease-out, box-shadow 120ms ease-out; }
+      .store:hover, .button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+      .store:active, .button:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+      .lang { transition: background-color 120ms ease-out; }
+      .lang:hover { background: rgba(255, 255, 255, 0.14); }
+    }
+
+    /* On load the 2048 face gets slapped down and its captions slam in, as in the game. */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-sticker { animation: slap 560ms cubic-bezier(0.3, 1.45, 0.55, 1) both; }
+      .meme .top-text { animation: slam 240ms 420ms cubic-bezier(0.2, 0.9, 0.3, 1.25) both; }
+      .meme .bottom-text { animation: slam 240ms 600ms cubic-bezier(0.2, 0.9, 0.3, 1.25) both; }
+    }
+    @keyframes slap {
+      from { opacity: 0; transform: scale(1.3) rotate(-14deg); }
+      50% { opacity: 1; }
+      to { opacity: 1; transform: rotate(-4deg); }
+    }
+    @keyframes slam {
+      from { opacity: 0; transform: scale(1.7); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top wrap">
+    <a class="lang" href="/2048memes/pt/" hreflang="pt-BR" lang="pt-BR">Português</a>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <h1 class="meme">
+        <span class="caption top-text">2048</span>
+        <img class="sticker hero-sticker" src="/2048memes/assets/moai-sticker.webp" width="568" height="568" fetchpriority="high" alt="" />
+        <span class="caption bottom-text">Memes</span>
+      </h1>
+      <div>
+        <p class="lede">A merge puzzle where every tile is a reaction face. Swipe to slide the tiles, and when two matching faces touch, they merge into the next face up. Each one reacts a little harder than the last, from a polite <img class="face" src="/2048memes/assets/face-2.webp" width="160" height="160" alt="🙂" /> at 2 to the stone face <img class="face" src="/2048memes/assets/face-2048.webp" width="160" height="160" alt="🗿" /> at 2048.</p>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/app/id853096849"><small>Download on the</small>App Store</a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=br.com.vincilabs.memes2048"><small>Get it on</small>Google Play</a>
+        </div>
+        <p class="note">Free, with ads. You don't need an account or an internet connection to play.</p>
+      </div>
+    </section>
+
+    <section class="faces wrap" aria-labelledby="faces-title">
+      <div>
+        <h2 class="caption" id="faces-title">Every face, in order</h2>
+        <p>Every time two tiles merge, the number doubles and the face changes. The number sits under the face, like the bottom text on a meme.</p>
+        <p>Get the stone face at 2048 and you win. Tap <b>Keep going</b> to play on, past the alien at 4096 and up to the crown at 8192.</p>
+        <p>From 64 up, the first time you make a new face, it slams onto the screen with its own caption. The skull at 1024 shows up saying OK I'M DEAD. The rest you'll find on your own.</p>
+      </div>
+      <div class="board">
+        <div class="cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <ol class="tiles" aria-label="The faces from 2 to 8192">
+          <li class="tile" style="--fill: #E9EEFF"><img src="/2048memes/assets/face-2.webp" width="160" height="160" loading="lazy" alt="Slightly smiling face" /><span class="caption">2</span></li>
+          <li class="tile" style="--fill: #CFE0FF"><img src="/2048memes/assets/face-4.webp" width="160" height="160" loading="lazy" alt="Smirking face" /><span class="caption">4</span></li>
+          <li class="tile" style="--fill: #A8F0E0"><img src="/2048memes/assets/face-8.webp" width="160" height="160" loading="lazy" alt="Face with raised eyebrow" /><span class="caption">8</span></li>
+          <li class="tile" style="--fill: #7BE3B5"><img src="/2048memes/assets/face-16.webp" width="160" height="160" loading="lazy" alt="Flushed face" /><span class="caption">16</span></li>
+          <li class="tile" style="--fill: #C6F068"><img src="/2048memes/assets/face-32.webp" width="160" height="160" loading="lazy" alt="Pleading face" /><span class="caption">32</span></li>
+          <li class="tile" style="--fill: #FFA24C"><img src="/2048memes/assets/face-64.webp" width="160" height="160" loading="lazy" alt="Loudly crying face" /><span class="caption">64</span></li>
+          <li class="tile" style="--fill: #FF6F59"><img src="/2048memes/assets/face-128.webp" width="160" height="160" loading="lazy" alt="Clown face" /><span class="caption">128</span></li>
+          <li class="tile" style="--fill: #FF4F8B"><img src="/2048memes/assets/face-256.webp" width="160" height="160" loading="lazy" alt="Smiling face with sunglasses" /><span class="caption">256</span></li>
+          <li class="tile" style="--fill: #D64BFF"><img src="/2048memes/assets/face-512.webp" width="160" height="160" loading="lazy" alt="Exploding head" /><span class="caption">512</span></li>
+          <li class="tile" style="--fill: #8A5CFF"><img src="/2048memes/assets/face-1024.webp" width="160" height="160" loading="lazy" alt="Skull" /><span class="caption">1024</span></li>
+          <li class="tile win" style="--fill: #FFC21A"><img src="/2048memes/assets/face-2048.webp" width="160" height="160" loading="lazy" alt="Moai, the stone face" /><span class="caption">2048</span><span class="tag">You win</span></li>
+          <li class="tile" style="--fill: #0E0E14"><img src="/2048memes/assets/face-4096.webp" width="160" height="160" loading="lazy" alt="Alien" /><span class="caption">4096</span></li>
+          <li class="tile" style="--fill: #0E0E14"><img src="/2048memes/assets/face-8192.webp" width="160" height="160" loading="lazy" alt="Crown" /><span class="caption">8192</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="know wrap" aria-labelledby="know-title">
+      <h2 class="caption" id="know-title">Good to know</h2>
+      <dl class="facts">
+        <div>
+          <dt>Plays offline</dt>
+          <dd>The game doesn't need an internet connection, so you can play on a flight or anywhere the signal drops.</dd>
+        </div>
+        <div>
+          <dt>No account</dt>
+          <dd>There's nothing to sign up for. Your best score and settings are saved on your phone.</dd>
+        </div>
+        <div>
+          <dt>Free, with ads</dt>
+          <dd>A banner sits below the board. Now and then, when you start a new game after a game over, a full-screen ad plays first. You'll never get one in the middle of a game.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="support wrap" id="support" aria-labelledby="support-title">
+      <h2 class="caption" id="support-title">Need help?</h2>
+      <div class="card">
+        <img class="sticker help-sticker" src="/2048memes/assets/pleading-sticker.webp" width="284" height="284" loading="lazy" alt="" />
+        <div>
+          <p class="intro">Found a bug, or have an idea for the game? Send us an email. Tell us which phone you're using and what happened, and we'll get back to you.</p>
+          <p><a class="button" href="mailto:contato@vincilabs.com.br?subject=2048%20Memes">contato@vincilabs.com.br</a></p>
+          <p><a href="/2048memes/privacy/">Read the privacy policy</a></p>
+        </div>
+        <div class="faq">
+          <h3>Where is my game saved?</h3>
+          <p>On your phone. Your current board, best score and settings are stored in the app. There's no account, so we don't have a copy, and deleting the app deletes them.</p>
+          <h3>How do I change my ad privacy choices?</h3>
+          <p>In the game, open <b>Settings</b> and tap <b>Ad privacy choices</b>. On iPhone, you can also turn off tracking in the iOS Settings app, under Privacy &amp; Security › Tracking. The game plays the same either way.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="gg caption">GG</p>
+      <p class="made">2048 Memes is made by Vinci Labs. The first version came out in 2014.</p>
+      <nav class="links" aria-label="More about 2048 Memes">
+        <a href="/2048memes/privacy/">Privacy policy</a>
+        <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+      <p class="credit">Emoji art: Microsoft Fluent Emoji, <a href="/2048memes/assets/LICENSE-fluentui-emoji.txt">MIT License</a></p>
+    </div>
+  </footer>
+</body>
+</html>
