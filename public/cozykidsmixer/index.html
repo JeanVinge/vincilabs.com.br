@@ -123,15 +123,9 @@
     }
     .brand img { width: 44px; height: 44px; border-radius: 10px; }
     .lede { color: var(--cyan); font-size: clamp(1.125rem, 0.9vw + 0.9rem, 1.3125rem); line-height: 1.5; max-width: 34rem; margin: 0 0 28px; }
-    .soon {
-      display: inline-block;
-      margin: 0;
-      padding: 10px 16px;
-      border: 1.5px solid rgba(240, 230, 200, 0.45);
-      border-radius: 999px;
-      background: rgba(15, 15, 30, 0.25);
-      font: 500 0.875rem/1.35 var(--mono);
-    }
+    .stores { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+    .stores a { display: block; border-radius: 8px; }
+    .stores img { display: block; height: 48px; width: auto; }
     .devices { margin: 12px 0 0 2px; font: 500 0.8125rem/1 var(--mono); color: rgba(240, 230, 200, 0.75); }
 
     /* An iPhone drawn in CSS, from the store screenshots' measurements: rim,
@@ -253,9 +247,11 @@
           <p class="brand"><img src="/cozykidsmixer/assets/icon.png" width="44" height="44" alt="" />Cozy Mixer</p>
           <h1>Bedtime, without the battle</h1>
           <p class="lede">A sound machine for kids with a small pixel-art village inside it. You choose the sounds, the village gets ready for bed, and your child drifts off along with it.</p>
-          <!-- At launch, swap this line for Apple's "Download on the App Store" badge, linked to https://apps.apple.com/app/id6793739390 -->
-          <p class="soon">Coming soon to the App Store</p>
-          <p class="devices">For iPhone and iPad</p>
+          <p class="stores">
+            <a href="https://apps.apple.com/app/id6793739390"><img src="/cozykidsmixer/assets/app-store-badge.svg" width="144" height="48" alt="Download on the App Store" /></a>
+            <a href="https://apps.apple.com/app/id6793739390?platform=mac"><img src="/cozykidsmixer/assets/mac-app-store-badge.svg" width="187" height="48" alt="Download on the Mac App Store" /></a>
+          </p>
+          <p class="devices">For iPhone, iPad and Mac</p>
         </div>
         <div class="phone">
           <div class="bezel">
