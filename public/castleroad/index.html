@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Castle Road</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="A portrait pixel-art melee game. Walk a 2.2 km road by torchlight, fight wolves, bandits and armored knights with swipes, and climb to the castle to face the Lantern King." />
+  <link rel="canonical" href="https://vincilabs.com.br/castleroad/" />
+  <link rel="alternate" hreflang="en" href="https://vincilabs.com.br/castleroad/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://vincilabs.com.br/castleroad/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://vincilabs.com.br/castleroad/" />
+  <meta name="theme-color" content="#1b1030" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vincilabs.com.br/castleroad/" />
+  <meta property="og:title" content="The Castle Road" />
+  <meta property="og:description" content="Walk a 2.2 km road by torchlight and fight your way up to the Lantern King. A pixel-art melee game for iPhone, iPad and Android." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="pt_BR" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preload" href="/castleroad/assets/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "The Castle Road",
+    "gamePlatform": ["iOS", "Android"],
+    "applicationCategory": "GameApplication",
+    "description": "A portrait pixel-art first-person melee game. Walk by torchlight along a 2.2 km road up to a castle and fight through to the Lantern King.",
+    "url": "https://vincilabs.com.br/castleroad/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Vinci Labs", "url": "https://vincilabs.com.br/" }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Press Start 2P";
+      src: url("/castleroad/assets/press-start-2p-latin.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --night: #1b1030;
+      --night-deep: #120a22;
+      --horizon: #5b3a6e;
+      --ember: #ff9a3c;
+      --ember-glow: #ffc773;
+      --parchment: #f1e6cf;
+      --muted: #d9c9ae;
+      --display: "Press Start 2P", "Courier New", monospace;
+      --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--night-deep); }
+    body {
+      margin: 0;
+      color: var(--parchment);
+      background:
+        radial-gradient(120% 60% at 50% 0%, rgba(91, 58, 110, 0.55), transparent 70%),
+        linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+      background-color: var(--night);
+      font: 400 1.0625rem/1.6 var(--body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    p { margin: 0 0 16px; }
+    h1, h2, h3 { margin: 0; }
+
+    .wrap {
+      max-width: 1100px;
+      margin-inline: auto;
+      padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+    }
+
+    a { color: var(--ember-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+
+    .skip {
+      position: absolute; left: -9999px; top: 8px;
+      padding: 8px 12px; background: var(--ember); color: var(--night); font-weight: 700; z-index: 10;
+    }
+    .skip:focus { left: 8px; }
+
+    /* Top bar */
+    .top {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding-top: max(16px, env(safe-area-inset-top));
+    }
+    .brand { font: 400 0.75rem/1.4 var(--display); color: var(--parchment); text-decoration: none; }
+    .lang {
+      padding: 10px 14px;
+      border: 2px solid rgba(241, 230, 207, 0.6);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      line-height: 1;
+      color: var(--parchment);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero { position: relative; display: grid; gap: 28px; padding-block: 28px 56px; }
+    .title {
+      font: 400 clamp(1.5rem, 6.4vw, 3.4rem)/1.25 var(--display);
+      color: var(--ember);
+      text-shadow: 0 4px 0 #7a3412, 0 0 28px rgba(255, 154, 60, 0.45);
+      text-wrap: balance;
+    }
+    .title span { display: block; color: var(--parchment); text-shadow: 0 4px 0 var(--night-deep); font-size: 0.62em; margin-bottom: 0.5em; }
+    .hook { font-size: clamp(1.125rem, 0.6vw + 1rem, 1.3125rem); line-height: 1.5; max-width: 32rem; margin-top: 20px; color: var(--parchment); }
+    .scene { position: relative; min-height: 220px; }
+    .scene svg { width: 100%; height: auto; display: block; }
+    .glow {
+      position: absolute; left: 50%; bottom: 14%; width: 46%; aspect-ratio: 1; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(255, 154, 60, 0.55), rgba(255, 154, 60, 0) 65%);
+      pointer-events: none;
+    }
+
+    /* Store area */
+    .stores { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin-top: 8px; }
+    .store-soon { display: flex; flex-direction: column; gap: 8px; flex: 1 1 210px; max-width: 260px; margin: 0; }
+    .store-soon img { width: 100%; height: 56px; object-fit: contain; object-position: left center; opacity: 0.5; filter: grayscale(0.4); }
+    .soon-pill {
+      display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 8px 14px;
+      border: 2px dashed rgba(241, 230, 207, 0.55); border-radius: 14px;
+      color: var(--parchment); font-weight: 700; font-size: 0.9375rem; text-align: center;
+    }
+    .soon-note { font-size: 0.9375rem; color: var(--muted); margin: 0; }
+    .note { margin-top: 16px; font-size: 0.9375rem; color: var(--muted); max-width: 34rem; }
+
+    /* Sections */
+    section.block { padding-block: clamp(48px, 8vw, 88px); border-top: 2px solid rgba(91, 58, 110, 0.7); }
+    h2.heading { font: 400 clamp(1rem, 2.4vw, 1.5rem)/1.5 var(--display); color: var(--ember); margin-bottom: 28px; text-wrap: balance; }
+
+    .steps { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+    .step {
+      padding: 22px 22px 20px; background: rgba(91, 58, 110, 0.28);
+      border: 2px solid rgba(255, 154, 60, 0.35); border-radius: 16px;
+    }
+    .step h3 { font: 400 0.8125rem/1.6 var(--display); color: var(--ember-glow); margin-bottom: 12px; }
+    .step p { margin: 0; color: var(--parchment); }
+
+    .features { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
+    .features li { padding: 18px 18px 16px; background: var(--night-deep); border-radius: 14px; border-left: 4px solid var(--ember); }
+    .features strong { display: block; margin-bottom: 4px; color: var(--parchment); }
+    .features span { color: var(--muted); font-size: 0.96875rem; }
+
+    /* Pass */
+    .pass {
+      padding: clamp(24px, 4vw, 40px); border-radius: 22px;
+      background: linear-gradient(160deg, rgba(91, 58, 110, 0.55), rgba(27, 16, 48, 0.9));
+      border: 2px solid rgba(255, 154, 60, 0.5);
+    }
+    .pass h2 { color: var(--ember); }
+    .pass ul { margin: 0 0 20px; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .pass li { padding-left: 28px; position: relative; }
+    .pass li::before { content: ""; position: absolute; left: 4px; top: 0.55em; width: 10px; height: 10px; background: var(--ember); transform: rotate(45deg); }
+    .pass p.fine { font-size: 0.9375rem; color: var(--muted); margin: 0; }
+    .pass .free { margin: 22px 0 0; padding-top: 18px; border-top: 2px solid rgba(241, 230, 207, 0.2); }
+
+    /* Screenshots */
+    .shots {
+      display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+      margin: 0 -16px; padding: 4px 16px 16px; scrollbar-width: thin;
+    }
+    .shots img {
+      flex: 0 0 min(64vw, 230px); width: min(64vw, 230px); aspect-ratio: 390 / 844; height: auto;
+      scroll-snap-align: center; border-radius: 20px; border: 3px solid var(--horizon);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); background: var(--night-deep); object-fit: cover;
+    }
+    @media (min-width: 900px) {
+      .shots { overflow: visible; justify-content: center; }
+      .shots img { flex: 0 1 200px; width: auto; max-width: 200px; }
+    }
+
+    /* Footer */
+    .foot { padding-block: 48px max(40px, env(safe-area-inset-bottom)); background: var(--night-deep); border-top: 2px solid var(--horizon); text-align: center; }
+    .foot p { margin: 0 auto 14px; max-width: 34rem; color: var(--muted); font-size: 0.9375rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; font-weight: 700; margin: 0 0 16px; }
+    .links a { color: var(--parchment); }
+
+    @media (min-width: 860px) {
+      .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 48px 72px; }
+      .hero .scene { order: 2; }
+      .features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .lang:hover { background: rgba(241, 230, 207, 0.12); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .glow { animation: flicker 2.8s steps(4, end) infinite; }
+    }
+    @keyframes flicker {
+      0% { opacity: 0.85; } 25% { opacity: 1; } 50% { opacity: 0.7; } 75% { opacity: 0.95; } 100% { opacity: 0.85; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top wrap">
+    <a class="brand" href="/castleroad/">The Castle Road</a>
+    <a class="lang" href="/castleroad/pt/" hreflang="pt-BR" lang="pt-BR">Português</a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="title">
+      <div>
+        <h1 class="title" id="title"><span>The</span>Castle Road</h1>
+        <p class="hook">Walk a 2.2 km road by torchlight. Swipe to fight what waits in the dark, keep your torch burning, and climb to the castle.</p>
+        <div class="stores">
+          <div class="store-soon">
+            <img src="/castleroad/assets/app-store-badge.svg" width="120" height="40" alt="Download on the App Store badge (coming soon)" />
+            <p class="soon-note">App Store: coming soon</p>
+          </div>
+          <div class="store-soon">
+            <p class="soon-pill">Coming soon to Google Play</p>
+          </div>
+        </div>
+        <p class="note">Free to download, with ads after a death. Runs on iPhone, iPad and Android, in portrait or landscape on tablets.</p>
+      </div>
+
+      <div class="scene" aria-hidden="true">
+        <div class="glow"></div>
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+          <rect width="400" height="260" fill="#1b1030"/>
+          <rect y="0" width="400" height="150" fill="#2a1842"/>
+          <rect y="120" width="400" height="30" fill="#3d2656"/>
+          <!-- moon, hidden behind clouds -->
+          <rect x="300" y="28" width="22" height="22" fill="#f1e6cf" opacity="0.35"/>
+          <!-- castle on the cliff -->
+          <polygon points="150,150 160,150 160,110 168,110 168,96 176,96 176,110 184,110 184,150 220,150 220,132 230,132 230,84 240,84 240,132 250,132 250,150 300,150 300,120 310,120 310,150 340,150 340,160 150,160" fill="#120a22"/>
+          <rect x="226" y="60" width="8" height="10" fill="#ff9a3c"/>
+          <rect x="176" y="84" width="4" height="6" fill="#ff9a3c"/>
+          <!-- ridge and road -->
+          <polygon points="0,170 60,150 120,164 180,160 260,176 340,160 400,170 400,260 0,260" fill="#120a22"/>
+          <polygon points="170,260 200,190 214,190 240,260" fill="#5b3a6e" opacity="0.8"/>
+          <!-- torch -->
+          <rect x="196" y="176" width="6" height="30" fill="#5b3a6e"/>
+          <rect x="192" y="164" width="14" height="12" fill="#ff9a3c"/>
+          <rect x="195" y="158" width="8" height="8" fill="#ffc773"/>
+          <!-- figure -->
+          <rect x="190" y="222" width="8" height="20" fill="#0a0614"/>
+          <rect x="188" y="210" width="12" height="12" fill="#0a0614"/>
+          <!-- wolf eyes -->
+          <rect x="84" y="206" width="3" height="3" fill="#ff9a3c"/>
+          <rect x="94" y="206" width="3" height="3" fill="#ff9a3c"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="block wrap" aria-labelledby="what-title">
+      <h2 class="heading" id="what-title">What you do</h2>
+      <ol class="steps">
+        <li class="step">
+          <h3>01 · Walk by torchlight</h3>
+          <p>Start at the forest edge and follow the road through a valley, past an inn and a chapel, and up the switchbacks. The torch burns fuel and lights the dark, so keep it fed.</p>
+        </li>
+        <li class="step">
+          <h3>02 · Fight with swipes</h3>
+          <p>Slash, swing heavy, or thrust. Block at the right moment for a perfect block, dodge, or strike with the torch. Wolves, bandits, brutes, skeletons, parapet archers and armored knights all come for you.</p>
+        </li>
+        <li class="step">
+          <h3>03 · Face the Lantern King</h3>
+          <p>At the top waits the Lantern King, a final boss in three phases. Collect embers along the road.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="block wrap" aria-labelledby="features-title">
+      <h2 class="heading" id="features-title">Features</h2>
+      <ul class="features">
+        <li><strong>Three difficulties</strong><span>Pilgrim, Knight and Lantern-bearer. Pick the road that fits your nerve.</span></li>
+        <li><strong>An offline Guide</strong><span>Hints built into the game. It works without a connection, and your questions never leave the device.</span></li>
+        <li><strong>Tilt aiming and camera</strong><span>Tilt your phone to aim and to move the camera.</span></li>
+        <li><strong>Haptics and music</strong><span>Haptic feedback on the hits, and music for the road.</span></li>
+        <li><strong>Tablets in any orientation</strong><span>iPad and Android tablets play in portrait or landscape.</span></li>
+        <li><strong>Many languages</strong><span>Play in many languages.</span></li>
+      </ul>
+    </section>
+
+    <section class="block wrap" aria-labelledby="pass-title">
+      <div class="pass">
+        <h2 class="heading" id="pass-title">Castle Road Pass</h2>
+        <ul>
+          <li>No ads.</li>
+          <li>Respawn at checkpoints instead of starting over at the forest edge.</li>
+          <li>Buy upgrades in the Store.</li>
+          <li>A weekly ember gift.</li>
+          <li>New roads with each update.</li>
+        </ul>
+        <p class="fine">The Pass is an auto-renewable subscription, yearly with a 3-day free trial or monthly. The price is shown in the store before you buy. Payment is charged to your Apple ID or Google account, and you can cancel any time in your App Store or Google Play subscription settings.</p>
+        <p class="fine free">The game is free. After a death, a full-screen ad may play (at most one every 3 minutes). Free players restart from the forest edge and lose their embers. <a href="/castleroad/terms/">Terms of use</a></p>
+      </div>
+    </section>
+
+    <section class="block wrap" aria-labelledby="shots-title">
+      <h2 class="heading" id="shots-title">Screenshots</h2>
+      <div class="shots">
+        <img src="/castleroad/assets/shot-1.webp" width="390" height="844" loading="lazy" alt="Placeholder for gameplay screenshot 1: the torchlit forest edge" />
+        <img src="/castleroad/assets/shot-2.webp" width="390" height="844" loading="lazy" alt="Placeholder for gameplay screenshot 2: a fight on the valley road" />
+        <img src="/castleroad/assets/shot-3.webp" width="390" height="844" loading="lazy" alt="Placeholder for gameplay screenshot 3: the inn and the chapel" />
+        <img src="/castleroad/assets/shot-4.webp" width="390" height="844" loading="lazy" alt="Placeholder for gameplay screenshot 4: the switchbacks up to the castle" />
+        <img src="/castleroad/assets/shot-5.webp" width="390" height="844" loading="lazy" alt="Placeholder for gameplay screenshot 5: the Lantern King" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <nav class="links" aria-label="More about The Castle Road">
+        <a href="/castleroad/privacy/">Privacy policy</a>
+        <a href="/castleroad/terms/">Terms of use</a>
+        <a href="mailto:contato@vincilabs.com.br?subject=The%20Castle%20Road">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+      <p>The Castle Road is made by Vinci Labs.</p>
+    </div>
+  </footer>
+</body>
+</html>

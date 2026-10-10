@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Castle Road: Política de Privacidade</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Política de privacidade de The Castle Road, um jogo de combate em pixel art da Vinci Labs. Seu progresso fica no aparelho, e a versão gratuita mostra anúncios do Google AdMob." />
+  <link rel="canonical" href="https://vincilabs.com.br/castleroad/pt/privacy/" />
+  <link rel="alternate" hreflang="en" href="https://vincilabs.com.br/castleroad/privacy/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://vincilabs.com.br/castleroad/pt/privacy/" />
+  <link rel="alternate" hreflang="x-default" href="https://vincilabs.com.br/castleroad/privacy/" />
+  <meta name="theme-color" content="#1b1030" />
+  <link rel="preload" href="/castleroad/assets/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: "Press Start 2P";
+      src: url("/castleroad/assets/press-start-2p-latin.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --night: #1b1030;
+      --night-deep: #120a22;
+      --horizon: #5b3a6e;
+      --ember: #ff9a3c;
+      --ember-glow: #ffc773;
+      --parchment: #f1e6cf;
+      --muted: #d9c9ae;
+      --display: "Press Start 2P", "Courier New", monospace;
+      --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--night-deep); }
+    body {
+      margin: 0;
+      color: var(--parchment);
+      background:
+        radial-gradient(120% 50% at 50% 0%, rgba(91, 58, 110, 0.5), transparent 70%),
+        linear-gradient(180deg, var(--night) 0%, var(--night-deep) 60%);
+      background-color: var(--night);
+      font: 400 1.0625rem/1.65 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    p { margin: 0 0 16px; }
+    b { font-weight: 700; }
+    .wrap { max-width: 860px; margin-inline: auto; padding-inline: max(18px, env(safe-area-inset-left)) max(18px, env(safe-area-inset-right)); }
+    a { color: var(--ember-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    :focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); }
+    .brand { font: 400 0.75rem/1.4 var(--display); color: var(--parchment); text-decoration: none; }
+    .lang {
+      padding: 10px 14px; border: 2px solid rgba(241, 230, 207, 0.6); border-radius: 12px;
+      font-weight: 700; font-size: 0.9375rem; line-height: 1; color: var(--parchment); text-decoration: none;
+    }
+    .head { padding-block: clamp(36px, 7vw, 64px) 28px; }
+    h1 {
+      margin: 0 0 16px; font: 400 clamp(1.25rem, 3.6vw + 0.6rem, 2.4rem)/1.3 var(--display);
+      color: var(--ember); text-shadow: 0 4px 0 #7a3412; text-wrap: balance;
+    }
+    .meta { margin: 0; font-size: 0.96875rem; color: var(--muted); }
+    .paper {
+      margin-bottom: clamp(48px, 8vw, 88px); padding: clamp(24px, 5vw, 52px);
+      color: var(--parchment); background: rgba(91, 58, 110, 0.22);
+      border: 2px solid rgba(255, 154, 60, 0.35); border-radius: 22px;
+    }
+    .paper h2 {
+      margin: 40px 0 12px; font: 400 clamp(0.875rem, 1vw + 0.6rem, 1.0625rem)/1.6 var(--display);
+      color: var(--ember-glow);
+    }
+    .paper h2:first-child { margin-top: 0; }
+    .paper p, .paper li { max-width: 40rem; }
+    .paper ul { margin: 0 0 16px; padding-left: 1.25em; }
+    .paper li { margin: 0 0 10px; padding-left: 0.2em; }
+    .paper li::marker { color: var(--ember); }
+    .paper > :last-child { margin-bottom: 0; }
+    .short { padding: clamp(18px, 3vw, 28px); border: 2px solid var(--ember); border-radius: 16px; background: var(--night-deep); }
+    .short h2 { margin-top: 0; }
+    .short ul, .short li:last-child { margin-bottom: 0; }
+    .foot { padding-block: 48px max(40px, env(safe-area-inset-bottom)); background: var(--night-deep); border-top: 2px solid var(--horizon); text-align: center; }
+    .made { margin: 0 auto 18px; max-width: 34rem; color: var(--muted); font-size: 0.9375rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; font-weight: 700; }
+    .links a { color: var(--parchment); }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .lang { transition: background-color 120ms ease-out; }
+      .lang:hover { background: rgba(241, 230, 207, 0.12); }
+    }
+  </style>
+</head>
+<body>
+  <header class="top wrap">
+    <a class="brand" href="/castleroad/pt/">The Castle Road</a>
+    <a class="lang" href="/castleroad/privacy/" hreflang="en" lang="en">English</a>
+  </header>
+
+  <main class="wrap">
+    <div class="head">
+      <h1>Política de privacidade</h1>
+      <p class="meta">The Castle Road para iPhone, iPad e Android · Em vigor desde <time datetime="2026-10-10">10 de outubro de 2026</time></p>
+    </div>
+    <article class="paper">
+      <section class="short" aria-labelledby="short-title">
+        <h2 id="short-title">Resumo</h2>
+        <ul>
+          <li>The Castle Road guarda o seu progresso no próprio aparelho. Não temos contas e não coletamos seus dados pessoais em servidores nossos.</li>
+          <li>A versão gratuita mostra anúncios do Google AdMob. O Google pode usar um identificador de publicidade, mas só com o seu consentimento ou quando as regras permitirem anúncios não personalizados.</li>
+          <li>As compras do Castle Road Pass são processadas pela Apple ou pelo Google. Nunca vemos seus dados de pagamento.</li>
+          <li>Não vendemos dados, e o jogo não tem nenhum SDK de análise.</li>
+        </ul>
+      </section>
+
+      <h2>Quem somos</h2>
+      <p>The Castle Road é desenvolvido pela VINCI LABS (Jean Vinge), no Brasil. Nesta política, "nós" significa VINCI LABS. Se tiver alguma dúvida sobre privacidade, escreva para <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>.</p>
+
+      <h2>O que o jogo guarda no seu aparelho</h2>
+      <p>O jogo guarda o seu progresso no aparelho: sua posição na estrada, suas brasas, suas melhorias e suas configurações. Esses dados ficam no seu aparelho. Não os enviamos para nós nem para ninguém, e não há conta nem login.</p>
+      <p>O Guia funciona offline. As perguntas que você faz a ele são respondidas no aparelho e não saem dele.</p>
+      <p>O aplicativo não inclui nenhum SDK de análise, e não vendemos dados.</p>
+
+      <h2>Anúncios</h2>
+      <p>A versão gratuita de The Castle Road mostra anúncios em tela cheia do Google AdMob, pelo SDK Google Mobile Ads. Um anúncio pode aparecer depois de uma morte, no máximo um a cada 3 minutos. O Castle Road Pass remove os anúncios, e, enquanto ele estiver ativo, o aplicativo não carrega anúncios.</p>
+      <p>Para exibir anúncios, medi-los e prevenir fraudes, o Google pode coletar:</p>
+      <ul>
+        <li>Identificadores do aparelho. No iPhone e no iPad, é o identificador de publicidade (IDFA), usado apenas se você permitir o rastreamento quando o pedido do App Tracking Transparency da Apple aparecer. No Android, é o ID de publicidade do Android.</li>
+        <li>Seu endereço IP e uma localização aproximada obtida a partir dele.</li>
+        <li>Como você interage com os anúncios, além de dados de diagnóstico e desempenho.</li>
+      </ul>
+      <p>Quando você consentir, o Google pode mostrar anúncios personalizados. Caso contrário, os anúncios são não personalizados e não usam o identificador de publicidade para direcionamento. O Google trata esses dados segundo as políticas próprias dele. Veja <a href="https://policies.google.com/technologies/partner-sites">como o Google usa informações de sites ou aplicativos que usam os serviços dele</a> e a <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a>.</p>
+
+      <h2>Consentimento e suas escolhas</h2>
+      <p>Quando a lei exigir, o aplicativo pede seu consentimento pela mensagem de consentimento do Google antes de mostrar anúncios personalizados, ou permite que você recuse, conforme as regras do lugar onde você mora. No iPhone e no iPad, o pedido do App Tracking Transparency da Apple também pergunta se o aplicativo pode rastreá-lo. Se você disser não, o identificador de publicidade não é usado para rastreamento.</p>
+      <p>Você pode mudar suas escolhas a qualquer momento: no iPhone e no iPad, em Ajustes › Privacidade e Segurança › Rastreamento; no Android, nos ajustes do aparelho, em Google › Anúncios, onde é possível redefinir ou excluir o seu ID de publicidade.</p>
+
+      <h2>Compras</h2>
+      <p>O Castle Road Pass é uma assinatura com renovação automática, vendida pela App Store ou pelo Google Play. A compra é processada inteiramente pela Apple ou pelo Google. Nunca vemos seu nome, seus dados de pagamento ou sua conta. O aplicativo usa o sistema de compras da Apple ou do Google para saber se o seu Pass está ativo. Veja os <a href="/castleroad/pt/terms/">termos de uso</a> para entender como a assinatura funciona.</p>
+
+      <h2>Crianças</h2>
+      <p>The Castle Road não é direcionado a crianças menores de 13 anos. O jogo tem combate e é voltado a jogadores mais velhos que isso. Não coletamos intencionalmente informações pessoais de ninguém, inclusive de crianças. Se você acredita que uma criança menor de 13 anos nos enviou informações pessoais, escreva para nós e as excluiremos.</p>
+
+      <h2>Retenção e exclusão de dados</h2>
+      <p>Seu progresso e suas configurações ficam no aparelho até você excluí-los. Excluir o aplicativo os remove do aparelho, e não mantemos nenhuma cópia em lugar algum. O registro da compra é mantido pela Apple ou pelo Google, segundo as regras deles. Os dados que o Google coleta para anúncios são mantidos segundo a Política de Privacidade do Google. Para saber como excluir seus dados, veja a <a href="/castleroad/pt/delete-data/">página de exclusão de dados</a>.</p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>Se mudarmos esta política, publicaremos a nova versão nesta página e atualizaremos a data de vigência no topo. Se uma mudança afetar quais dados são coletados ou como são usados, também informaremos isso nas notas de versão da atualização do aplicativo.</p>
+      <p>Esta versão está em vigor desde <time datetime="2026-10-10">10 de outubro de 2026</time>.</p>
+
+      <h2>Contato</h2>
+      <p>VINCI LABS (Jean Vinge), Brasil<br />E-mail: <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a></p>
+
+    </article>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="made">The Castle Road é feito pela Vinci Labs.</p>
+      <nav class="links" aria-label="Mais sobre The Castle Road">
+        <a href="/castleroad/pt/">The Castle Road</a>
+        <a href="/castleroad/pt/privacy/">Política de privacidade</a>
+        <a href="/castleroad/pt/terms/">Termos de uso</a>
+        <a href="/castleroad/pt/delete-data/">Exclua seus dados</a>
+        <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

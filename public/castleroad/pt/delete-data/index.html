@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Castle Road: Exclua seus dados</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Como pedir a exclusão dos seus dados de The Castle Road, o que é excluído e o que é mantido." />
+  <link rel="canonical" href="https://vincilabs.com.br/castleroad/pt/delete-data/" />
+  <link rel="alternate" hreflang="en" href="https://vincilabs.com.br/castleroad/delete-data/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://vincilabs.com.br/castleroad/pt/delete-data/" />
+  <link rel="alternate" hreflang="x-default" href="https://vincilabs.com.br/castleroad/delete-data/" />
+  <meta name="theme-color" content="#1b1030" />
+  <link rel="preload" href="/castleroad/assets/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: "Press Start 2P";
+      src: url("/castleroad/assets/press-start-2p-latin.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --night: #1b1030;
+      --night-deep: #120a22;
+      --horizon: #5b3a6e;
+      --ember: #ff9a3c;
+      --ember-glow: #ffc773;
+      --parchment: #f1e6cf;
+      --muted: #d9c9ae;
+      --display: "Press Start 2P", "Courier New", monospace;
+      --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; background: var(--night-deep); }
+    body {
+      margin: 0;
+      color: var(--parchment);
+      background:
+        radial-gradient(120% 50% at 50% 0%, rgba(91, 58, 110, 0.5), transparent 70%),
+        linear-gradient(180deg, var(--night) 0%, var(--night-deep) 60%);
+      background-color: var(--night);
+      font: 400 1.0625rem/1.65 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    p { margin: 0 0 16px; }
+    b { font-weight: 700; }
+    .wrap { max-width: 860px; margin-inline: auto; padding-inline: max(18px, env(safe-area-inset-left)) max(18px, env(safe-area-inset-right)); }
+    a { color: var(--ember-glow); text-decoration-thickness: 2px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    :focus-visible { outline: 3px solid var(--ember); outline-offset: 3px; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: max(16px, env(safe-area-inset-top)); }
+    .brand { font: 400 0.75rem/1.4 var(--display); color: var(--parchment); text-decoration: none; }
+    .lang {
+      padding: 10px 14px; border: 2px solid rgba(241, 230, 207, 0.6); border-radius: 12px;
+      font-weight: 700; font-size: 0.9375rem; line-height: 1; color: var(--parchment); text-decoration: none;
+    }
+    .head { padding-block: clamp(36px, 7vw, 64px) 28px; }
+    h1 {
+      margin: 0 0 16px; font: 400 clamp(1.25rem, 3.6vw + 0.6rem, 2.4rem)/1.3 var(--display);
+      color: var(--ember); text-shadow: 0 4px 0 #7a3412; text-wrap: balance;
+    }
+    .meta { margin: 0; font-size: 0.96875rem; color: var(--muted); }
+    .paper {
+      margin-bottom: clamp(48px, 8vw, 88px); padding: clamp(24px, 5vw, 52px);
+      color: var(--parchment); background: rgba(91, 58, 110, 0.22);
+      border: 2px solid rgba(255, 154, 60, 0.35); border-radius: 22px;
+    }
+    .paper h2 {
+      margin: 40px 0 12px; font: 400 clamp(0.875rem, 1vw + 0.6rem, 1.0625rem)/1.6 var(--display);
+      color: var(--ember-glow);
+    }
+    .paper h2:first-child { margin-top: 0; }
+    .paper p, .paper li { max-width: 40rem; }
+    .paper ul { margin: 0 0 16px; padding-left: 1.25em; }
+    .paper li { margin: 0 0 10px; padding-left: 0.2em; }
+    .paper li::marker { color: var(--ember); }
+    .paper > :last-child { margin-bottom: 0; }
+    .short { padding: clamp(18px, 3vw, 28px); border: 2px solid var(--ember); border-radius: 16px; background: var(--night-deep); }
+    .short h2 { margin-top: 0; }
+    .short ul, .short li:last-child { margin-bottom: 0; }
+    .foot { padding-block: 48px max(40px, env(safe-area-inset-bottom)); background: var(--night-deep); border-top: 2px solid var(--horizon); text-align: center; }
+    .made { margin: 0 auto 18px; max-width: 34rem; color: var(--muted); font-size: 0.9375rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; font-weight: 700; }
+    .links a { color: var(--parchment); }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .lang { transition: background-color 120ms ease-out; }
+      .lang:hover { background: rgba(241, 230, 207, 0.12); }
+    }
+  </style>
+</head>
+<body>
+  <header class="top wrap">
+    <a class="brand" href="/castleroad/pt/">The Castle Road</a>
+    <a class="lang" href="/castleroad/delete-data/" hreflang="en" lang="en">English</a>
+  </header>
+
+  <main class="wrap">
+    <div class="head">
+      <h1>Exclua seus dados</h1>
+      <p class="meta">The Castle Road para iPhone, iPad e Android · Atualizado em <time datetime="2026-10-10">10 de outubro de 2026</time></p>
+    </div>
+    <article class="paper">
+      <section class="short" aria-labelledby="short-title">
+        <h2 id="short-title">Resumo</h2>
+        <ul>
+          <li>The Castle Road não tem conta, e não guardamos seus dados pessoais em servidores nossos.</li>
+          <li>Seu progresso, suas brasas, suas melhorias e suas configurações ficam só no aparelho. Excluir o aplicativo os remove.</li>
+          <li>Para pedir que confirmemos que não há nada para excluir, ou para tirar uma dúvida, escreva para nós e responderemos em até 30 dias.</li>
+        </ul>
+      </section>
+
+      <h2>Como pedir a exclusão dos seus dados</h2>
+      <ul>
+        <li>Envie um e-mail para <a href="mailto:contato@vincilabs.com.br?subject=The%20Castle%20Road%20exclus%C3%A3o%20de%20dados">contato@vincilabs.com.br</a> com o assunto "The Castle Road exclusão de dados".</li>
+        <li>Diga qual aparelho você usa (iPhone, iPad ou Android). Você não precisa enviar nenhum dado de conta ou pessoal, porque o jogo não tem contas.</li>
+        <li>Responderemos em até 30 dias para confirmar o pedido e explicar o que foi excluído.</li>
+      </ul>
+
+      <h2>O que é excluído</h2>
+      <ul>
+        <li><b>No seu aparelho:</b> seu progresso, suas brasas, suas melhorias e suas configurações. Desinstalar The Castle Road remove tudo isso imediatamente. Você também pode limpar o armazenamento do aplicativo nos ajustes do aparelho.</li>
+        <li><b>Do nosso lado:</b> não guardamos nenhum dado sobre você, então não há nada para manter ou excluir. Os e-mails que você nos envia são excluídos depois que o pedido for respondido.</li>
+      </ul>
+
+      <h2>O que não podemos excluir por você</h2>
+      <ul>
+        <li><b>Dados de anúncios no Google:</b> o SDK Google Mobile Ads pode coletar identificadores do aparelho, uma localização aproximada e interações com anúncios para exibi-los. O Google mantém esses dados segundo as políticas próprias dele. Para limitá-los ou excluí-los, redefina ou exclua seu ID de publicidade (no Android, Ajustes › Google › Anúncios; no iPhone e no iPad, desative o rastreamento em Ajustes › Privacidade e Segurança › Rastreamento), e veja os <a href="https://myaccount.google.com/data-and-privacy">controles de dados e privacidade do Google</a>.</li>
+        <li><b>Registros de compra:</b> se você assinou o Castle Road Pass, a Apple ou o Google mantêm o registro da compra, segundo as próprias regras e a lei. Você pode gerenciar ou cancelar a assinatura na sua conta da App Store ou do Google Play.</li>
+      </ul>
+      <p>Veja nossa <a href="/castleroad/pt/privacy/">política de privacidade</a> para todos os detalhes.</p>
+
+      <h2>Contato</h2>
+      <p>VINCI LABS (Jean Vinge), Brasil<br />E-mail: <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a></p>
+
+    </article>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="made">The Castle Road é feito pela Vinci Labs.</p>
+      <nav class="links" aria-label="Mais sobre The Castle Road">
+        <a href="/castleroad/pt/">The Castle Road</a>
+        <a href="/castleroad/pt/privacy/">Política de privacidade</a>
+        <a href="/castleroad/pt/terms/">Termos de uso</a>
+        <a href="/castleroad/pt/delete-data/">Exclua seus dados</a>
+        <a href="mailto:contato@vincilabs.com.br">contato@vincilabs.com.br</a>
+        <a href="https://vincilabs.com.br/">vincilabs.com.br</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
