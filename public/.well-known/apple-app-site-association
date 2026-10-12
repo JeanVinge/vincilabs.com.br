@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["SFLM2JCB4V.com.cozykidsMixer.CozyKidsMixer"],
+        "components": [
+          { "/": "/cozykidsmixer/open/*", "comment": "Cozy Mixer: Custom Product Page deep links" }
+        ]
+      }
+    ]
+  }
+}
