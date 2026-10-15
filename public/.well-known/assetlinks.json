@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "br.com.vincilabs.cozykidsmixer",
+      "sha256_cert_fingerprints": [
+        "10:24:0F:84:C3:FA:07:4B:80:2C:E8:BF:74:62:F3:9C:9B:07:5C:8C:78:CF:76:25:DC:F3:36:2A:7D:70:DD:55",
+        "12:C5:72:2E:AD:8B:EC:6E:FA:BF:4D:22:0A:EA:6D:79:6B:1D:C6:FD:9C:D0:71:8E:B2:58:BF:6A:46:20:49:96"
+      ]
+    }
+  }
+]
