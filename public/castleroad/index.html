@@ -277,14 +277,8 @@
     }
     .hook { font-size: 20px; line-height: 1.5; max-width: 34ch; margin: 0; text-shadow: 0 2px 12px #000; }
     .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; margin: 0; }
-    .appstore { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
-    .appstore img { height: 52px; width: auto; opacity: 0.55; }
-    .cap { font-size: 14px; color: var(--lilac); }
-    .soon-pill {
-      display: inline-flex; align-items: center; min-height: 52px; margin: 0;
-      padding: 10px 18px; border: 2px dashed rgba(179, 166, 221, 0.5); border-radius: 14px;
-      color: var(--parchment); font-weight: 700; font-size: 15px;
-    }
+    .stores a { display: block; border-radius: 8px; }
+    .stores img { display: block; height: 52px; width: auto; }
     .scrollcue {
       position: absolute; left: 0; right: 0; bottom: 24px;
       display: flex; flex-direction: column; align-items: center; gap: 10px;
@@ -540,11 +534,8 @@
         <h1 class="title" id="title"><span class="the">The</span>Castle Road</h1>
         <p class="hook">4.54 km of storm, forest and stone stand between you and the castle on the hill. Light the torch and walk.</p>
         <div class="stores">
-          <div class="appstore">
-            <img src="/castleroad/assets/app-store-badge.svg" width="120" height="40" alt="Download on the App Store badge (coming soon)" />
-            <span class="cap">Coming soon to the App Store</span>
-          </div>
-          <p class="soon-pill">Coming soon to Google Play</p>
+          <a href="https://apps.apple.com/app/id6821760898"><img src="/castleroad/assets/app-store-badge.svg" width="120" height="40" alt="Download on the App Store" /></a>
+          <a href="https://play.google.com/store/apps/details?id=com.vincilabs.castleroad"><img src="/castleroad/assets/google-play-badge.png" width="564" height="168" alt="Get it on Google Play" /></a>
         </div>
       </div>
       <div class="scrollcue" aria-hidden="true">
@@ -718,11 +709,8 @@
         <h2 id="s8"><em>4.54 km.</em> The king is waiting.</h2>
         <p>Three phases. In the last one, only his lantern and your torch light the arena. Three perfect blocks open the finisher.</p>
         <div class="stores">
-          <div class="appstore">
-            <img src="/castleroad/assets/app-store-badge.svg" width="120" height="40" alt="Download on the App Store badge (coming soon)" />
-            <span class="cap">Coming soon to the App Store</span>
-          </div>
-          <p class="soon-pill">Coming soon to Google Play</p>
+          <a href="https://apps.apple.com/app/id6821760898"><img src="/castleroad/assets/app-store-badge.svg" width="120" height="40" alt="Download on the App Store" /></a>
+          <a href="https://play.google.com/store/apps/details?id=com.vincilabs.castleroad"><img src="/castleroad/assets/google-play-badge.png" width="564" height="168" alt="Get it on Google Play" /></a>
         </div>
       </div>
     </section>
